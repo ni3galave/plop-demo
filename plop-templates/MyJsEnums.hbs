@@ -1,0 +1,34 @@
+/* @author Nitin */
+
+const MyJsEnums =
+          { {{#each data}}
+                '{{upperCase @key}}' : [
+                {{#each this}}
+                    { 'label' : '{{name}}', 'value' : {{this.value}}, 'type' : '{{{type}}}'},
+                {{/each}}
+                ],
+              {{/each}}
+
+              enumElementByValue : function(myEnum, value) {
+		              var element = _.find(myEnum, function(element) {
+			                 return element.value == value;
+		              });
+		              return element;
+	             },
+               enumElementByPropertyNameValue : function(myEnum, propertyName, propertyValue) {
+		               for ( var element in myEnum) {
+			                  if (myEnum[element][propertyName] == propertyValue) {
+				                      return myEnum[element];
+			                  }
+		               }
+		               return null;
+	             },
+               enumLabelToValue : function(myEnum, label) {
+		               var element = _.find(myEnum, function(element) {
+			                  return element.label == label;
+		               });
+		               return (typeof element === "undefined") ? "--" : element.value;
+	             }
+          };
+
+module.exports = MyJsEnums;

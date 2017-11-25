@@ -1,0 +1,45 @@
+/* @author Nitin */
+
+//package name
+import java.util.HashMap;
+import java.util.Map;
+
+public enum MyEnum {
+
+  {{getConstants data}}
+  private final Integer value;
+
+  private static Map<Integer, MyEnum> valueToTextMapping;
+  public static Object getText(Integer i){
+      if(valueToTextMapping == null){
+          initMapping();
+      }
+      return valueToTextMapping.get(i);
+  }
+
+  private static void initMapping(){
+      valueToTextMapping = new HashMap<Integer, MyEnum>();
+      for(MyEnum s : values()){
+          valueToTextMapping.put(s.value, s);
+      }
+  }
+
+  public Integer getValue(){
+      return value;
+  }
+  private static final Map<Integer, MyEnum> MY_MAP = new HashMap<Integer, MyEnum>();
+
+  static {
+    for (MyEnum myEnum : values()) {
+      MY_MAP.put(myEnum.getValue(), myEnum);
+    }
+  }
+
+  public static MyEnum getByValue(int value) {
+    return MY_MAP.get(value);
+  }
+
+  private MyEnum(int value) {
+    this.value = value;
+  }
+}

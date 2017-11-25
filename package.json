@@ -1,0 +1,20 @@
+{
+  "name": "plop-demo",
+  "version": "1.0.0",
+  "description": "plop demo",
+  "main": "plopfile.js",
+  "dependencies": {
+    "plop": "^1.9.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "plop"
+  },
+  "keywords": [
+    "plop",
+    "demo",
+    "json"
+  ],
+  "author": "Nitin Galave",
+  "license": "MIT"
+}
